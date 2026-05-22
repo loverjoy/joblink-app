@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>JobLink - Connecting Talents to Opportunities</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:'Inter',sans-serif;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+    body{
+      background:#040b18;
+      color:white;
+      overflow-x:hidden;
+    }
+
+    a{
+      text-decoration:none;
+    }
+
+    .background{
+      position:fixed;
+      inset:0;
+      z-index:-1;
+      background:
+      radial-gradient(circle at top left, rgba(37,99,235,0.22), transparent 28%),
+      radial-gradient(circle at bottom right, rgba(251,191,36,0.14), transparent 28%),
+      linear-gradient(135deg,#020817,#07142c,#0b1b39);
+    }
+
+    /* NAVBAR */
+
+    nav{
+      width:100%;
+      padding:24px 8%;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      position:sticky;
+      top:0;
+      z-index:1000;
+      backdrop-filter:blur(14px);
+      background:rgba(2,8,23,0.5);
+      border-bottom:1px solid rgba(255,255,255,0.05);
+    }
+
+    .logo{
+      display:flex;
+      align-items:center;
+      gap:14px;
+    }
+
+    .logo img{
+      width:55px;
+      height:55px;
+      border-radius:16px;
+      object-fit:cover;
+      border:2px solid rgba(255,255,255,0.08);
+    }
+
+    .logo h2{
+      font-size:30px;
+      font-weight:800;
+      letter-spacing:-1px;
+    }
+
+    .logo span{
+      color:#fbbf24;
+    }
+
+    .powered{
+      font-size:13px;
+      color:#94a3b8;
+      margin-top:3px;
+    }
+
+    .nav-links{
+      display:flex;
+      gap:35px;
+    }
+
+    .nav-links a{
+      color:white;
+      font-weight:500;
+      transition:0.3s;
+    }
+
+    .nav-links a:hover{
+      color:#fbbf24;
+    }
+
+    .download-btn-nav{
+      background:#fbbf24;
+      color:#020817;
+      padding:14px 24px;
+      border-radius:50px;
+      font-weight:700;
+      transition:0.3s;
+      display:flex;
+      align-items:center;
+      gap:10px;
+    }
+
+    .download-btn-nav:hover{
+      transform:translateY(-3px);
+      box-shadow:0 10px 35px rgba(251,191,36,0.3);
+    }
+
+    /* HERO */
+
+    .hero{
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      padding:50px 8%;
+    }
+
+    .hero-container{
+      width:100%;
+      max-width:1300px;
+      margin:auto;
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:70px;
+      align-items:center;
+    }
+
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      background:rgba(255,255,255,0.05);
+      border:1px solid rgba(255,255,255,0.08);
+      padding:12px 22px;
+      border-radius:50px;
+      margin-bottom:28px;
+      color:#d1d5db;
+      backdrop-filter:blur(12px);
+    }
+
+    .dot{
+      width:10px;
+      height:10px;
+      background:#fbbf24;
+      border-radius:50%;
+    }
+
+    .hero-text h1{
+      font-size:76px;
+      line-height:1;
+      font-weight:800;
+      letter-spacing:-3px;
+      margin-bottom:25px;
+    }
+
+    .hero-text h1 span{
+      color:#fbbf24;
+    }
+
+    .hero-text p{
+      color:#cbd5e1;
+      font-size:20px;
+      line-height:1.9;
+      margin-bottom:40px;
+      max-width:620px;
+    }
+
+    .hero-buttons{
+      display:flex;
+      gap:20px;
+      flex-wrap:wrap;
+      margin-bottom:35px;
+    }
+
+    .primary-btn{
+      background:#fbbf24;
+      color:#020817;
+      padding:18px 34px;
+      border-radius:60px;
+      font-weight:700;
+      display:flex;
+      align-items:center;
+      gap:12px;
+      transition:0.3s;
+    }
+
+    .primary-btn:hover{
+      transform:translateY(-4px);
+      box-shadow:0 12px 35px rgba(251,191,36,0.25);
+    }
+
+    .secondary-btn{
+      border:1px solid rgba(255,255,255,0.15);
+      color:white;
+      padding:18px 34px;
+      border-radius:60px;
+      display:flex;
+      align-items:center;
+      gap:12px;
+      transition:0.3s;
+      background:rgba(255,255,255,0.03);
+    }
+
+    .secondary-btn:hover{
+      border-color:#fbbf24;
+      color:#fbbf24;
+    }
+
+    /* TEST CREDENTIALS */
+
+    .credentials-box{
+      margin-top:20px;
+      background:rgba(255,255,255,0.04);
+      border:1px solid rgba(255,255,255,0.08);
+      border-radius:28px;
+      padding:28px;
+      backdrop-filter:blur(14px);
+      max-width:560px;
+    }
+
+    .credentials-title{
+      display:flex;
+      align-items:center;
+      gap:14px;
+      margin-bottom:22px;
+    }
+
+    .credentials-title i{
+      width:46px;
+      height:46px;
+      border-radius:50%;
+      background:rgba(251,191,36,0.12);
+      color:#fbbf24;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+
+    .credentials-title h3{
+      color:#fbbf24;
+      font-size:24px;
+    }
+
+    .credential{
+      background:rgba(255,255,255,0.04);
+      border:1px solid rgba(255,255,255,0.05);
+      padding:18px;
+      border-radius:18px;
+      margin-bottom:16px;
+    }
+
+    .credential:last-child{
+      margin-bottom:0;
+    }
+
+    .credential span{
+      display:block;
+      color:#94a3b8;
+      font-size:13px;
+      margin-bottom:8px;
+      text-transform:uppercase;
+      letter-spacing:1px;
+    }
+
+    .credential p{
+      font-size:18px;
+      font-weight:700;
+      color:white;
+      word-break:break-all;
+    }
+
+    /* PHONE */
+
+    .phone-side{
+      display:flex;
+      justify-content:center;
+      position:relative;
+    }
+
+    .glow{
+      position:absolute;
+      width:450px;
+      height:450px;
+      background:#fbbf24;
+      border-radius:50%;
+      filter:blur(120px);
+      opacity:0.12;
+    }
+
+    .phone{
+      width:340px;
+      height:700px;
+      background:#111827;
+      border-radius:45px;
+      padding:14px;
+      border:2px solid rgba(255,255,255,0.08);
+      box-shadow:0 40px 80px rgba(0,0,0,0.6);
+      position:relative;
+      transform:rotate(-4deg);
+    }
+
+    .screen{
+      width:100%;
+      height:100%;
+      border-radius:35px;
+      overflow:hidden;
+      background:linear-gradient(180deg,#07142c,#0f172a);
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      align-items:center;
+      text-align:center;
+      padding:30px;
+    }
+
+    .screen img{
+      width:140px;
+      height:140px;
+      object-fit:cover;
+      border-radius:30px;
+      margin-bottom:25px;
+      border:2px solid rgba(255,255,255,0.08);
+    }
+
+    .screen h2{
+      font-size:36px;
+      margin-bottom:15px;
+    }
+
+    .screen h2 span{
+      color:#fbbf24;
+    }
+
+    .screen p{
+      color:#cbd5e1;
+      line-height:1.8;
+      margin-bottom:30px;
+    }
+
+    .screen-download{
+      background:#fbbf24;
+      color:#020817;
+      padding:14px 28px;
+      border-radius:50px;
+      font-weight:700;
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+    }
+
+    /* FEATURES */
+
+    .features{
+      padding:90px 8%;
+    }
+
+    .section-title{
+      text-align:center;
+      margin-bottom:60px;
+    }
+
+    .section-title h2{
+      font-size:48px;
+      margin-bottom:15px;
+    }
+
+    .section-title p{
+      color:#94a3b8;
+      font-size:18px;
+    }
+
+    .features-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+      gap:25px;
+    }
+
+    .feature-card{
+      background:rgba(255,255,255,0.04);
+      border:1px solid rgba(255,255,255,0.08);
+      border-radius:30px;
+      padding:35px;
+      transition:0.3s;
+    }
+
+    .feature-card:hover{
+      transform:translateY(-8px);
+      border-color:#fbbf24;
+    }
+
+    .feature-card i{
+      width:70px;
+      height:70px;
+      border-radius:50%;
+      background:rgba(251,191,36,0.08);
+      color:#fbbf24;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:28px;
+      margin-bottom:24px;
+    }
+
+    .feature-card h3{
+      margin-bottom:15px;
+      font-size:24px;
+    }
+
+    .feature-card p{
+      color:#cbd5e1;
+      line-height:1.8;
+    }
+
+    /* FOOTER */
+
+    footer{
+      padding:40px 8%;
+      border-top:1px solid rgba(255,255,255,0.06);
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      flex-wrap:wrap;
+      gap:20px;
+    }
+
+    footer p{
+      color:#94a3b8;
+    }
+
+    .footer-socials{
+      display:flex;
+      gap:15px;
+    }
+
+    .footer-socials a{
+      width:45px;
+      height:45px;
+      border-radius:50%;
+      background:rgba(255,255,255,0.05);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:white;
+      transition:0.3s;
+    }
+
+    .footer-socials a:hover{
+      background:#fbbf24;
+      color:#020817;
+    }
+
+    /* MOBILE */
+
+    @media(max-width:1000px){
+
+      .hero-container{
+        grid-template-columns:1fr;
+        text-align:center;
+      }
+
+      .hero-text p{
+        margin:auto auto 40px;
+      }
+
+      .hero-buttons{
+        justify-content:center;
+      }
+
+      .credentials-box{
+        margin-left:auto;
+        margin-right:auto;
+      }
+
+      .hero-text h1{
+        font-size:56px;
+      }
+
+      .phone{
+        transform:none;
+      }
+
+    }
+
+    @media(max-width:750px){
+
+      nav{
+        flex-direction:column;
+        gap:20px;
+      }
+
+      .nav-links{
+        gap:20px;
+        flex-wrap:wrap;
+        justify-content:center;
+      }
+
+      .hero-text h1{
+        font-size:44px;
+        letter-spacing:-2px;
+      }
+
+      .phone{
+        width:290px;
+        height:600px;
+      }
+
+      footer{
+        flex-direction:column;
+        text-align:center;
+      }
+
+    }
+
+  </style>
+
+</head>
+<body>
+
+  <div class="background"></div>
+
+  <!-- NAVIGATION -->
+
+  <nav>
+
+    <div class="logo">
+
+      <!-- REPLACE joblink-logo.png WITH YOUR LOGO FILE -->
+      <img src="joblink-logo.png" alt="JobLink Logo">
+
+      <div>
+        <h2>Job<span>Link</span></h2>
+        <div class="powered">
+          Powered by SkillMatch
+        </div>
+      </div>
+
+    </div>
+
+    <div class="nav-links">
+      <a href="#">Home</a>
+      <a href="#">Features</a>
+      <a href="#">Download</a>
+      <a href="#">Contact</a>
+    </div>
+
+    <!-- REPLACE app.apk WITH YOUR APK FILE -->
+    <a href="app.apk" download class="download-btn-nav">
+      <i class="fa-solid fa-download"></i>
+      Download App
+    </a>
+
+  </nav>
+
+  <!-- HERO SECTION -->
+
+  <section class="hero">
+
+    <div class="hero-container">
+
+      <!-- LEFT -->
+
+      <div class="hero-text">
+
+        <div class="badge">
+          <div class="dot"></div>
+          Smart Local Job Matching Platform
+        </div>
+
+        <h1>
+          Connecting <span>Talents</span><br>
+          to Opportunities
+        </h1>
+
+        <p>
+          JobLink helps artisans, freelancers, students,
+          and skilled workers connect with opportunities nearby.
+          Find jobs, build skills, and grow your future —
+          all from your mobile phone.
+        </p>
+
+        <div class="hero-buttons">
+
+          <a href="app.apk" download class="primary-btn">
+            <i class="fa-solid fa-download"></i>
+            Download APK
+          </a>
+
+          <a href="#features" class="secondary-btn">
+            <i class="fa-solid fa-circle-info"></i>
+            Explore Features
+          </a>
+
+        </div>
+
+        <!-- TEST CREDENTIALS -->
+
+        <div class="credentials-box">
+
+          <div class="credentials-title">
+
+            <i class="fa-solid fa-user-check"></i>
+
+            <h3>Testing Credentials</h3>
+
+          </div>
+
+          <div class="credential">
+            <span>User ID</span>
+            <p>test@gmail.com</p>
+          </div>
+
+          <div class="credential">
+            <span>Password</span>
+            <p>123456789</p>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- RIGHT -->
+
+      <div class="phone-side">
+
+        <div class="glow"></div>
+
+        <div class="phone">
+
+          <div class="screen">
+
+            <!-- REPLACE joblink-logo.png WITH YOUR LOGO -->
+            <img src="joblink-logo.png" alt="JobLink">
+
+            <h2>Job<span>Link</span></h2>
+
+            <p>
+              Connecting talents to opportunities through
+              smart matching and local discovery.
+            </p>
+
+            <a href="app.apk" download class="screen-download">
+              <i class="fa-solid fa-download"></i>
+              Download App
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- FEATURES -->
+
+  <section class="features" id="features">
+
+    <div class="section-title">
+
+      <h2>Why Choose JobLink?</h2>
+
+      <p>
+        Everything you need to discover opportunities
+        and connect with talent.
+      </p>
+
+    </div>
+
+    <div class="features-grid">
+
+      <div class="feature-card">
+
+        <i class="fa-solid fa-briefcase"></i>
+
+        <h3>Find Jobs</h3>
+
+        <p>
+          Discover nearby opportunities that match your
+          skills and interests instantly.
+        </p>
+
+      </div>
+
+      <div class="feature-card">
+
+        <i class="fa-solid fa-users"></i>
+
+        <h3>Connect with Talent</h3>
+
+        <p>
+          Businesses and individuals can connect with
+          trusted skilled workers quickly.
+        </p>
+
+      </div>
+
+      <div class="feature-card">
+
+        <i class="fa-solid fa-location-dot"></i>
+
+        <h3>Local Matching</h3>
+
+        <p>
+          Smart location-based matching helps users
+          find opportunities nearby.
+        </p>
+
+      </div>
+
+      <div class="feature-card">
+
+        <i class="fa-solid fa-shield-halved"></i>
+
+        <h3>Secure & Reliable</h3>
+
+        <p>
+          Built with trust, speed, and reliability
+          for both workers and employers.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- FOOTER -->
+
+  <footer>
+
+    <p>
+      © 2026 JobLink • Powered by SkillMatch
+    </p>
+
+    <div class="footer-socials">
+
+      <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+
+      <a href="#"><i class="fa-brands fa-instagram"></i></a>
+
+      <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+
+      <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+
+    </div>
+
+  </footer>
+
+</body>
+</html>
